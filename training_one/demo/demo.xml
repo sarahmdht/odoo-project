@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+        <record id="template1" model="template.template">
+            <field name="name">Template 1</field>
+            <field name="price">10000</field>
+        </record>
+
+    </data>
+</odoo>

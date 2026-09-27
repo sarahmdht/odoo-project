@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+training_one.access_template_template,access_template_template,training_one.model_template_template,base.group_user,1,1,1,1
+training_one.access_template_template_group,access_template_template_group,training_one.model_template_template,training_one.template_user_group,1,1,1,1

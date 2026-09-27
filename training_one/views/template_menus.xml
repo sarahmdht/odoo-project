@@ -1,0 +1,8 @@
+<odoo>
+    <menuitem id="root_level" name="Root"> 
+        <menuitem id="second_level" name="Second"> 
+            <menuitem id="third_level" name="Third" action="test_record"/> 
+        </menuitem>
+    </menuitem> 
+
+</odoo>
