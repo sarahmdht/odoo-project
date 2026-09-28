@@ -1,3 +1,5 @@
+    <!-- make sure to call it from the manifest file  -->
+
 <odoo>
     <record id="template_user_group" model="res.groups">
         <field name="name">Template User</field>
