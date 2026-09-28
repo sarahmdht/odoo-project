@@ -1,7 +1,7 @@
 <odoo>
     <!-- make sure to call it from the manifest file  -->
-    <!-- search view -->
     <record id="search_view_template" model="ir.ui.view">
+        <!-- search view -->
         <field name="name">template.template.search</field>
         <field name="model">template.template</field>
         <field name="arch" type="xml">
@@ -53,16 +53,27 @@
                         <field name="date" />
                         <!-- relationship field -->
                         <field name="relationship_manyone_id" />
-                        <field name="offers_id" />
-                        <field name="many_id" />
+                        <field name="offer_ids" />
+                        <field name="many_ids" />
                     </group>
-                    
+
                 </sheet>
-                
+                <notebook>
+                    <page string="Offers" name="offers">
+                        <field name="offer_ids">
+                            <list>
+                                <field name="name" />
+                                <field name="acceptance_state" />
+                                <field name="partner_id" />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+
             </form>
         </field>
     </record>
-    
+
 
     <!-- actions -->
     <record id="test_record" model="ir.actions.act_window">

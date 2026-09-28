@@ -11,6 +11,10 @@
         "security/ir.model.access.csv",
         # views
         "views/template_views.xml",
+        'views/template_manyone_views.xml',
+        'views/template_onemany_views.xml',
+        'views/template_manymany_views.xml',
+
         # menus
         "views/template_menus.xml",
     ],

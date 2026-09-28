@@ -8,4 +8,4 @@ class TemplateManyOne(models.Model):
     name = fields.Char(string='Name')
     # field_id = fields.Many2one('comodel.name', string='field') 
     # it is stated inside the template.py
-   
+    template_ids = fields.One2many('template.template', 'relationship_manyone_id', string='Templates')

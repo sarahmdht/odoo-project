@@ -1,0 +1,42 @@
+<odoo>
+    <!-- make sure to call it from the manifest file  -->
+    <!-- list view for template.onemany model -->
+    <record id="list_view_template_onemany" model="ir.ui.view">
+        <field name="name">template.onemany.list</field>
+        <field name="model">template.onemany</field>
+        <field name="arch" type="xml">
+            <list string="One2Many List View">
+                <field name="name" />
+                <field name="acceptance_state" />
+                <field name="partner_id" />
+                <field name="template_manyone_id" />
+            </list>
+        </field>
+    </record>
+
+    <!--  form view for template.onemany model -->
+    <record id="form_view_template_onemany" model="ir.ui.view">
+        <field name="name">template.onemany.form</field>
+        <field name="model">template.onemany</field>
+        <field name="arch" type="xml">
+            <form string="One2Many Form View">
+                <sheet>
+                    <h1>
+                        <field name="name" placeholder="Name" />
+                    </h1>
+                    <group>
+                        <field name="acceptance_state" />
+                        <field name="partner_id" />
+                        <field name="template_manyone_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- actions  -->
+    <record id="action_template_onemany" model="ir.actions.act_window">
+        <field name="name">OneMany</field>
+        <field name="res_model">template.onemany</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>   

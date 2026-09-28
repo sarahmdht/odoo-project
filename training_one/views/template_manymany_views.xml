@@ -1,0 +1,36 @@
+<odoo>
+    <!-- make sure to call it from the manifest file  -->
+    <!-- list view for template.manymany model -->
+    <record id="list_view_template_manymany" model="ir.ui.view">
+        <field name="name">template.manymany.list</field>
+        <field name="model">template.manymany</field>
+        <field name="arch" type="xml">
+            <list string="ManyMany List View">
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <!--  form view for template.manymany model -->
+    <record id="form_view_template_manymany" model="ir.ui.view">
+        <field name="name">template.manymany.form</field>
+        <field name="model">template.manymany</field>
+        <field name="arch" type="xml">
+            <form string="ManyMany Form View">
+                <sheet>
+                    <h1>
+                        <field name="name" placeholder="Name" />
+                    </h1>
+                  
+                </sheet>
+
+            </form>
+        </field>
+    </record>
+    <!-- actions  -->
+    <record id="action_template_manymany" model="ir.actions.act_window">
+        <field name="name">ManyMany</field>
+        <field name="res_model">template.manymany</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>   
