@@ -1,6 +1,65 @@
 <odoo>
+    <!-- search view -->
+    <record id="search_view_template" model="ir.ui.view">
+        <field name="name">template.template.search</field>
+        <field name="model">template.template</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="type" />
+                <field name="state" />
+                <field name="date" />
+                <!-- filter  -->
+                <filter name="filter_type" string="Type1" domain="[('type', '=', 'label1')]"/>
+                <filter name="filter_state" string="Draft" domain="[('state', '=', 'draft')]"/>
+                <!-- group by  -->
+                <filter name="group_by_date" string="Date" context="{'group_by': 'date'}"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- list view for template.template model -->
+    <record id="list_view_template" model="ir.ui.view">
+        <field name="name">template.template.list</field>
+        <field name="model">template.template</field>
+        <field name="arch" type="xml">
+            <list string="Template List View">
+                <field name="name" />
+                <field name="price" />
+                <field name="type" />
+                <field name="state" />
+                <field name="date" />
+            </list>
+        </field>
+    </record>
+
+    <!--  form view for template.template model -->
+    <record id="form_view_template" model="ir.ui.view">
+        <field name="name">template.template.form</field>
+        <field name="model">template.template</field>
+        <field name="arch" type="xml">
+            <form string="Template Form View">
+                <sheet>
+                    <group>
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </group>
+                    <group>
+                        <field name="price" />
+                        <field name="type" />
+                        <field name="state" />
+                        <field name="date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- actions -->
     <record id="test_record" model="ir.actions.act_window">
-        <field name="name">Test</field>
+        <!-- recall the field that are already defined in template.py  -->
+        <field name="name">List View Name</field>
         <field name="res_model">template.template</field>
         <field name="view_mode">list,form</field>
     </record>
