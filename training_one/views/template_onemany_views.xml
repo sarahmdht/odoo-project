@@ -29,6 +29,17 @@
                         <field name="partner_id" />
                         <field name="template_manyone_id" />
                     </group>
+                    <group>
+                        <h2>
+                            Computed Fields
+                        </h2>
+                    </group>
+                    <group>
+                        <field name="qty" string="Quantity" />
+                        <field name="unit_price" string="Unit Price" />
+                        <field name="readonlytotal" string="Readonly Total" />
+                        <field name="inversetotal" string="Inverse Total" />
+                    </group>
                 </sheet>
             </form>
         </field>
