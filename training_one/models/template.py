@@ -52,3 +52,22 @@ class Template(models.Model):
     def action_delete(self):
         self.ensure_one()
         raise UserError(_('Delete action not implemented'))
+
+
+    # stat buttons
+    line_count = fields.Integer(string='Line Count', compute='_compute_line_count')
+    @api.depends('offer_ids')
+    def _compute_line_count(self):
+        for rec in self:
+            rec.line_count = len(rec.offer_ids)
+
+    def action_offers(self):
+        self.ensure_one()
+        return {
+            'name': _('Offers'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'template.onemany',
+            'view_mode': 'list,form',
+            'domain': [('template_id', '=', self.id)],
+            'context': {'default_template_id': self.id},
+        }

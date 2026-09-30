@@ -6,13 +6,15 @@
         <field name="model">template.template</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name" />
+                <field name="name" filter_domain="[('name','ilike',self)]" />
                 <field name="type" />
                 <field name="state" />
                 <field name="date" />
                 <!-- filter  -->
                 <filter name="filter_type" string="Type1" domain="[('type', '=', 'label1')]" />
+                <separator/>
                 <filter name="filter_state" string="Draft" domain="[('state', '=', 'draft')]" />
+                <!-- <field name="context">{"search_default_filter_state": True}</field> -->
                 <!-- group by  -->
                 <filter name="group_by_date" string="Date" context="{'group_by': 'date'}" />
             </search>
@@ -40,34 +42,42 @@
         <field name="model">template.template</field>
         <field name="arch" type="xml">
             <form string="Template Form View">
-                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done" />
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_offers" type="object" class="oe_stat_button"
+                            icon="fa-thumbs-up">
+                            <field name="line_count" widget="statinfo" string="Offers" />
+                        </button>
+                    </div>
                     <group>
                         <h1>
                             <field name="name" />
                         </h1>
                     </group>
                     <group>
-                        <field name="price" widget="monetary"/>
-                        <field name="type" widget="selection"/>
-                        
-                        <field name="date" widget="date"/>
+                        <field name="price" widget="monetary" />
+                        <field name="type" widget="selection" />
+
+                        <field name="date" widget="date" />
                         <!-- relationship field -->
                         <field name="relationship_manyone_id" />
                         <field name="offer_ids" />
-                        <field name="many_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
-                        <!-- action buttons -->
-                        <button icon="fa-save" name="action_save" type="object" widget="button" class="btn-primary"/>
-                        <button icon="fa-trash" name="action_delete" type="object" widget="button" class="btn-danger"/>
+                        <field name="many_ids" widget="many2many_tags"
+                            options="{'color_field': 'color'}" />
+                        <!-- action buttons with decoration invisible -->
+                        <button icon="fa-save" name="action_save" type="object" widget="button"
+                            class="btn-primary" invisible="state in ('done')" />
+                        <button icon="fa-trash" name="action_delete" type="object" widget="button"
+                            class="btn-danger" />
                     </group>
                     <!-- inline views -->
                     <notebook>
                         <page string="Offers" name="offers">
                             <field name="offer_ids">
-                                <!-- manual order applied -->
-                                <!-- <list default_order="name asc">  -->
-                                 <list> 
-                                    <field name="sequence" widget="handle"/>
+                                <!-- manual order applied  and decorations-->
+                                <list decoration-success="parent.state == 'done'" default_order="name asc">
+                                    <field name="sequence" widget="handle" />
                                     <field name="name" />
                                     <field name="acceptance_state" />
                                     <field name="partner_id" />
@@ -88,6 +98,7 @@
         <field name="name">List View Name</field>
         <field name="res_model">template.template</field>
         <field name="view_mode">list,form</field>
+        <field name="context">{"search_default_filter_state": True}</field>
     </record>
 
 </odoo>

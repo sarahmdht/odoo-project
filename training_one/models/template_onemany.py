@@ -24,7 +24,10 @@ class TemplateOneMany(models.Model):
     unit_price = fields.Float()
     readonlytotal = fields.Float(compute='_compute_total', store=True)
     inversetotal = fields.Float(compute='_compute_total', inverse='_inverse_total', store=True)
-
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('done', 'Done'),
+        ], default='draft')
     @api.depends('qty', 'unit_price')
     def _compute_total(self):
         for rec in self:
@@ -51,3 +54,4 @@ class TemplateOneMany(models.Model):
                 'type': 'notification',
             }
         }
+
