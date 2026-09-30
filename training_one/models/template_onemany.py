@@ -5,6 +5,7 @@ class TemplateOneMany(models.Model):
     _name = 'template.onemany'
     _description = 'One2many Template'
 
+    sequence = fields.Integer(default=1)
     name = fields.Char(string='Name')
     acceptance_state = fields.Selection(
         [

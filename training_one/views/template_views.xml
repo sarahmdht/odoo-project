@@ -40,6 +40,7 @@
         <field name="model">template.template</field>
         <field name="arch" type="xml">
             <form string="Template Form View">
+                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,done"/>
                 <sheet>
                     <group>
                         <h1>
@@ -47,31 +48,34 @@
                         </h1>
                     </group>
                     <group>
-                        <field name="price" />
-                        <field name="type" />
-                        <field name="state" />
-                        <field name="date" />
+                        <field name="price" widget="monetary"/>
+                        <field name="type" widget="selection"/>
+                        
+                        <field name="date" widget="date"/>
                         <!-- relationship field -->
                         <field name="relationship_manyone_id" />
                         <field name="offer_ids" />
-                        <field name="many_ids" />
+                        <field name="many_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                         <!-- action buttons -->
-                        <button icon="fa-save" name="action_save" type="object" />
-                        <button icon="fa-trash" name="action_delete" type="object" />
+                        <button icon="fa-save" name="action_save" type="object" widget="button" class="btn-primary"/>
+                        <button icon="fa-trash" name="action_delete" type="object" widget="button" class="btn-danger"/>
                     </group>
-
+                    <!-- inline views -->
+                    <notebook>
+                        <page string="Offers" name="offers">
+                            <field name="offer_ids">
+                                <!-- manual order applied -->
+                                <!-- <list default_order="name asc">  -->
+                                 <list> 
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name" />
+                                    <field name="acceptance_state" />
+                                    <field name="partner_id" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
                 </sheet>
-                <notebook>
-                    <page string="Offers" name="offers">
-                        <field name="offer_ids">
-                            <list>
-                                <field name="name" />
-                                <field name="acceptance_state" />
-                                <field name="partner_id" />
-                            </list>
-                        </field>
-                    </page>
-                </notebook>
 
             </form>
         </field>
