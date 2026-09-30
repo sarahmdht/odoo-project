@@ -55,6 +55,9 @@
                         <field name="relationship_manyone_id" />
                         <field name="offer_ids" />
                         <field name="many_ids" />
+                        <!-- action buttons -->
+                        <button icon="fa-save" name="action_save" type="object" />
+                        <button icon="fa-trash" name="action_delete" type="object" />
                     </group>
 
                 </sheet>
